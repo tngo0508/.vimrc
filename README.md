@@ -1,2 +1,2 @@
-# .vimrc
+# vim
 vim plugins
