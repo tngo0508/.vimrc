@@ -2,22 +2,24 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 syntax on
-colorscheme jelleybeans
 filetype indent on 
 
+colorscheme atom
+
+set pastetoggle=<F3>
 set number
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set textwidth=120
 set showmatch
 set mouse=a 
 set smartindent
+set relativenumber
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -25,11 +27,27 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let delimitMate_expand_cr = 1
 
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -41,10 +59,8 @@ set laststatus=2
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-let g:Powerline_symbols = 'fancy'
-let g:molokai_original = 1
+"let g:Powerline_symbols = 'fancy'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -60,13 +76,14 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'dracula/vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'valloric/youcompleteme'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
