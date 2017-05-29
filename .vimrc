@@ -4,8 +4,10 @@ filetype off                  " required
 syntax on
 filetype indent on 
 
-colorscheme atom
+colorscheme ron
 
+set textwidth=80
+set visualbell
 set pastetoggle=<F3>
 set number
 set autoindent
@@ -17,9 +19,9 @@ set mouse=a
 set smartindent
 set relativenumber
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
