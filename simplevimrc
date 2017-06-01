@@ -1,0 +1,26 @@
+syntax on
+filetype indent on 
+
+colorscheme ron
+
+set textwidth=80
+set visualbell
+set pastetoggle=<F3>
+set number
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set showmatch
+set mouse=a 
+set smartindent
+set relativenumber
+
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+inoremap        [  []<Left>
+inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+
+inoremap        {  {}<Left>
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
