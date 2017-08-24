@@ -18,10 +18,8 @@ set showmatch
 set mouse=a 
 set smartindent
 set relativenumber
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set laststatus=2
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -54,15 +52,10 @@ let g:NERDTrimTrailingWhitespace = 1
 map <C-n> :NERDTreeToggle<CR>
 
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
 " Always show statusline
-set laststatus=2
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-"let g:Powerline_symbols = 'fancy'
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -77,15 +70,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'crusoexia/vim-monokai'
 Plugin 'raimondi/delimitmate'
-Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'valloric/youcompleteme'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -116,3 +104,4 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
