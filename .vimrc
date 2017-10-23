@@ -6,25 +6,37 @@ filetype indent on
 
 colorscheme ron
 
-set textwidth=80
+set tw=80
+set fo+=t
+set fo-=l
+set wrap
 set visualbell
 set pastetoggle=<F3>
 set number
 set autoindent
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set showmatch
 set mouse=a 
 set smartindent
 set relativenumber
-set laststatus=2
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2
+set t_Co=256
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set noeb vb t_vb=
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
+
 let delimitMate_expand_cr = 1
 
 " Add spaces after comment delimiters by default
@@ -48,14 +60,10 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dark'
 
 map <C-n> :NERDTreeToggle<CR>
-
-
-" Always show statusline
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -70,10 +78,16 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'raimondi/delimitmate'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'valloric/youcompleteme'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -104,4 +118,3 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
