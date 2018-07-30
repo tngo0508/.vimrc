@@ -4,19 +4,26 @@ filetype off                  " required
 syntax on
 filetype indent on 
 
-colorscheme ron
+colorscheme onedark
 
+" uncomment for writing notes
+" set wrap
+" set linebreak
+" set nolist
+
+" uncomment for writing codes
 set tw=80
 set fo+=t
 set fo-=l
 set wrap
+
 set visualbell
 set pastetoggle=<F3>
 set number
 set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set showmatch
 set mouse=a 
@@ -36,6 +43,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 let delimitMate_expand_cr = 1
 
@@ -60,10 +68,10 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme='dark'
-
 map <C-n> :NERDTreeToggle<CR>
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd vimenter * NERDTree
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -86,8 +94,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'valloric/youcompleteme'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'joshdick/onedark.vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
