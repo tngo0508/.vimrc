@@ -1,10 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-syntax on
+syntax enable
 filetype indent on 
-
-colorscheme onedark
+" set background=dark
+" colorscheme ron
 
 " uncomment for writing notes
 " set wrap
@@ -29,9 +29,9 @@ set showmatch
 set mouse=a 
 set smartindent
 set relativenumber
-"set laststatus=2
+set laststatus=2
 set t_Co=256
-"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set noeb vb t_vb=
 
 set statusline+=%#warningmsg#
@@ -69,9 +69,8 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 map <C-n> :NERDTreeToggle<CR>
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -93,8 +92,22 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'valloric/youcompleteme'
+"Plugin 'valloric/youcompleteme'
 Plugin 'joshdick/onedark.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Optional:
+Plugin 'honza/vim-snippets'
+
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plugin 'google/vim-glaive'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -113,6 +126,11 @@ Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+" the glaive#Install() should go after the "call vundle#end()"
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -125,3 +143,16 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+augroup autoformat_settings
+	autocmd FileType bzl AutoFormatBuffer buildifier
+	autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+	autocmd FileType dart AutoFormatBuffer dartfmt
+	autocmd FileType go AutoFormatBuffer gofmt
+	autocmd FileType gn AutoFormatBuffer gn
+	autocmd FileType html,css,json AutoFormatBuffer js-beautify
+	autocmd FileType java AutoFormatBuffer google-java-format
+	autocmd FileType python AutoFormatBuffer yapf
+	" Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
+
