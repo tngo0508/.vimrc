@@ -144,6 +144,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"auto format code 
 augroup autoformat_settings
 	autocmd FileType bzl AutoFormatBuffer buildifier
 	autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
@@ -156,3 +157,6 @@ augroup autoformat_settings
 	" Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 
+" swich to pipeline cursor in insert mode
+au InsertEnter * silent execute "!echo -en \<esc>[5 q"
+au InsertLeave * silent execute "!echo -en \<esc>[2 q"
