@@ -1,0 +1,22 @@
+syntax off
+set tags=tags;/
+set number
+set encoding=utf-8
+set fileencoding=utf-8
+set textwidth=79
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set laststatus=2
+set statusline=
+"set statusline+=%#PmenuSel#
+"set statusline+=%#LineNr#
+set statusline+=%F
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+set hlsearch
